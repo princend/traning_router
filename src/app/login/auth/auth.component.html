@@ -1,0 +1,47 @@
+<div class="auth-page">
+  <div class="container page">
+    <div class="row">
+
+      <div class="col-md-6 col-md-offset-3 col-xs-12">
+        <h1 class="text-xs-center">Sign in</h1>
+
+        <form #loginForm="ngForm">
+          <fieldset class="form-group" [ngClass]="{'has-danger':email.dirty&&email.invalid}">
+            <input name="email" class="form-control form-control-lg" type="text" placeholder="Email" [(ngModel)]="loginData.email"
+              #email="ngModel" required>
+          </fieldset>
+          <span *ngIf="email.dirty&&email.invalid">
+            <span *ngIf="email.errors['required']">
+              *請輸入email
+            </span>
+            <span *ngIf="email.errors['email']">
+              *email 格式部正確
+            </span>
+          </span>
+
+
+
+          <fieldset class="form-group">
+            <input name="password" class="form-control form-control-lg" type="password" placeholder="Password"
+              [(ngModel)]="loginData.password" #password="ngModel" required  minlength="4">
+          </fieldset>
+          <!-- <a href="javascript:void(0)" (click)="c(password)">aaaaaa</a> -->
+          <span *ngIf="password.dirty&&password.invalid">
+            <span *ngIf="password.errors['required']">
+              *請輸入密碼
+            </span>
+            <span *ngIf="password.errors['password']">
+              *password 格式不正確
+            </span>
+          </span>
+
+
+          <button class="btn btn-lg btn-primary pull-xs-right" (click)="sign()" [disabled]="loginForm.invalid">
+            Sign in
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
